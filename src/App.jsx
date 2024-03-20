@@ -6,6 +6,7 @@ function App() {
 
 const [timerCount, setTimerCount] = useState(10);
 
+
   function handleStart(){
     console.log('start timer')
     startCountdown(10);
@@ -18,10 +19,14 @@ const [timerCount, setTimerCount] = useState(10);
       console.log(counter);
       counter--;
       setTimerCount(counter);
-      if(counter < 1){
+      if(counter < 1 ){
         clearInterval(interval)
         setTimerCount('Time is up!')
         console.log('stop timer')
+
+        setTimeout(() => {
+          setTimerCount(10);
+        }, 3000)
       }
     },1000);
   };
