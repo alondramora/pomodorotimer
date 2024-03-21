@@ -82,3 +82,24 @@ button:focus-visible {
   }
 }
 
+#displayTime {
+  font-size: 2.5rem;
+}
+
+.mode-buttons-container {
+  display: flex;
+  justify-content: center;
+  margin-left: 1rem;
+}
+
+@media screen and (min-width:767px){
+  .mode-buttons-container {
+    margin-left: 0;
+  }
+}
+
+.mode-buttons {
+  margin-right: 1rem;
+
+}
+
