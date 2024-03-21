@@ -34,6 +34,7 @@ const [timerCount, setTimerCount] = useState(10);
 
 return (
     <>
+    <h1>Pomodoro Timer 🍅</h1>
     <div className="mode-buttons-container">
       <button className="mode-buttons">Pomodoro</button>
       <button className="mode-buttons">Short Break</button>
