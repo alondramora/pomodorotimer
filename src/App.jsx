@@ -6,21 +6,32 @@ function App() {
 
 // const [timerCount, setTimerCount] = useState(10);
 const [minutes, setMinutes] = useState(15);
-const [seconds, setSeconds] = useState(0)
+const [seconds, setSeconds] = useState(10)
+const [startButtonCopy, setStartButtonCopy] = useState('Start Timer')
 
 
   function handleStart(){
+    setStartButtonCopy('Stop Timer')
     console.log('start timer')
     // startCountdown(10);
-      startCountdownMinsAndSecs(15 , 0)
+      startCountdownMinsAndSecs(15 , 10)
   }
 
   function startCountdownMinsAndSecs(minutes, seconds){
     let mins = minutes;
     let secs = seconds;
 
+    // seconds are counting down and then resetting at 59 when they hit zero
+    //Need to figure out how to decrement the minutes when the seconds get to 0
     const interval = setInterval(() => {
-      console.log(mins + ':' + secs)
+      secs--;
+      setSeconds(secs);
+      if (secs < 1){
+        mins--;
+        setMinutes(mins);
+        clearInterval(interval)
+        setSeconds(59)
+      }
     },1000)
   }
 
@@ -63,7 +74,7 @@ return (
     </div>
     {/* <p id="displayTime">{timerCount}</p> */}
     <p id="minutes-and-seconds">{minutes}:{seconds}</p>
-    <Button onClick={handleStart}>Start Timer</Button>
+    <Button onClick={handleStart}>{startButtonCopy}</Button>
       
     </>
   )
