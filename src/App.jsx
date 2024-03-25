@@ -6,32 +6,47 @@ function App() {
 
 // const [timerCount, setTimerCount] = useState(10);
 const [minutes, setMinutes] = useState(15);
-const [seconds, setSeconds] = useState(10)
+const [seconds, setSeconds] = useState(15)
 const [startButtonCopy, setStartButtonCopy] = useState('Start Timer')
+const [buttonToggle, setButtonToggle] = useState(true)
 
 
   function handleStart(){
-    setStartButtonCopy('Stop Timer')
+    // find a way to toggle the timer button copy when we click
     console.log('start timer')
     // startCountdown(10);
-      startCountdownMinsAndSecs(15 , 10)
+      startCountdownMinsAndSecs(15 , 15)
+  }
+
+  function addLeadingZero(n){
+    return (n < 10 ? '0': '') + n;
   }
 
   function startCountdownMinsAndSecs(minutes, seconds){
     let mins = minutes;
     let secs = seconds;
 
+    
     // seconds are counting down and then resetting at 59 when they hit zero
     //Need to figure out how to decrement the minutes when the seconds get to 0
     const interval = setInterval(() => {
+     
       secs--;
       setSeconds(secs);
+
       if (secs < 1){
-        mins--;
-        setMinutes(mins);
-        clearInterval(interval)
         setSeconds(59)
       }
+    
+      // if (secs < 1){
+      //   mins--;
+      //   setMinutes(mins);
+      //   setSeconds(59)
+      //   if (mins == 0 && secs == 0){
+      //     clearInterval(interval)
+
+      //   }
+      // }
     },1000)
   }
 
@@ -73,7 +88,7 @@ return (
       <button className="mode-buttons">Long Break</button>
     </div>
     {/* <p id="displayTime">{timerCount}</p> */}
-    <p id="minutes-and-seconds">{minutes}:{seconds}</p>
+    <p id="minutes-and-seconds">{minutes}:{addLeadingZero(seconds)}</p>
     <Button onClick={handleStart}>{startButtonCopy}</Button>
       
     </>
