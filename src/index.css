@@ -29,12 +29,10 @@ body {
   min-height: 100vh;
 }
 
-@media screen and (min-width: 767px){
-   body {
-      place-items: center;
-
-   }
-
+@media screen and (min-width: 767px) {
+  body {
+    place-items: center;
+  }
 }
 
 h1 {
@@ -42,13 +40,12 @@ h1 {
   line-height: 1.1;
 }
 
-@media screen and (min-width: 767px){
+@media screen and (min-width: 767px) {
   h1 {
     font-size: 3.2em;
     line-height: 1.1;
   }
 }
-
 
 button {
   border-radius: 8px;
@@ -88,18 +85,16 @@ button:focus-visible {
 
 .mode-buttons-container {
   display: flex;
-  justify-content: center;
-  margin-left: .5rem;
+  justify-content: space-evenly;
+  margin-left: 0.5rem;
 }
 
-@media screen and (min-width:767px){
+@media screen and (min-width: 767px) {
   .mode-buttons-container {
     margin-left: 0;
   }
 }
 
 .mode-buttons {
-  margin-right: .5rem;
-
+  margin-right: 0.5rem;
 }
-
