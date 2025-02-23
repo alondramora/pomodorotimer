@@ -4,26 +4,26 @@ import Button from "./Button";
 import Timer from "./Timer";
 
 function App() {
+  const [timerValue, setTimerValue] = useState(20);
+
   function handleStart() {
-    // find a way to toggle the timer button copy when we click
     console.log("start timer");
-    // startCountdown(10);
+    setTimerValue(timerValue - 1);
   }
   function handlePause() {
-    // find a way to toggle the timer button copy when we click
     console.log("pause timer");
-    // startCountdown(10);
   }
   function handleStop() {
-    // find a way to toggle the timer button copy when we click
     console.log("stop timer");
-    // startCountdown(10);
   }
 
   return (
     <>
       <h1>Pomodoro Timer 🍅</h1>
-      <Timer />
+      {/* value is a prop that we pass to the Timer component, this holds the
+      timerValue value. A prop can be called anything just as long as we
+      reference it that same way in the component. See Timer component. */}
+      <Timer value={timerValue} />
       <div className="mode-buttons-container">
         <Button onClick={handleStart} className="mode-buttons">
           Start Timer
