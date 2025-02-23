@@ -6,10 +6,11 @@ import Timer from "./Timer";
 function App() {
   const [timerMins, setTimerMins] = useState(20);
   const [timerSecs, setTimerSecs] = useState("00");
+  const [isRunning, setIsRunning] = useState(false);
 
   function handleStart() {
-    console.log("start timer");
-    setTimerValue(timerValue - 1);
+    setIsRunning(true);
+    // setTimerValue(timerValue - 1);
   }
   function handlePause() {
     console.log("pause timer");
@@ -33,7 +34,7 @@ function App() {
           Pause Timer
         </Button>
         <Button onClick={handleStop} className="mode-buttons">
-          Stop Timer
+          Reset Timer
         </Button>
       </div>
     </>
