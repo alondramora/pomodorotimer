@@ -1,3 +1,7 @@
-export default function Timer({ value }) {
-  return <p id="minutes-and-seconds">{value}</p>;
+export default function Timer({ mins, secs }) {
+  return (
+    <p id="minutes-and-seconds">
+      {mins}:{secs}
+    </p>
+  );
 }
