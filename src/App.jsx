@@ -15,8 +15,8 @@ function App() {
   function handlePause() {
     console.log("pause timer");
   }
-  function handleStop() {
-    console.log("stop timer");
+  function handleReset() {
+    console.log("reset timer");
   }
 
   return (
@@ -33,7 +33,7 @@ function App() {
         <Button onClick={handlePause} className="mode-buttons">
           Pause Timer
         </Button>
-        <Button onClick={handleStop} className="mode-buttons">
+        <Button onClick={handleReset} className="mode-buttons">
           Reset Timer
         </Button>
       </div>
