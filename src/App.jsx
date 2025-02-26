@@ -10,15 +10,21 @@ function App() {
 
   function handleStart() {
     setIsRunning(true);
+    // setTimerValue(timerValue - 1);
+    // look into using useEffect and setiNTERVAL to change the seconds every second and then the mins. Reference vieo https://www.youtube.com/watch?v=kqK3tD7XHxA
   }
   function handlePause() {
-    console.log("pause timer");
+    if (isRunning == false) return;
+    setIsRunning((prev) => !prev);
   }
+
   function handleReset() {
     setTimerMins(20);
     setTimerSecs("00");
     setIsRunning(false);
   }
+
+  console.log(isRunning);
 
   return (
     <>
