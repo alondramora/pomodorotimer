@@ -1,17 +1,38 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import Button from "./Button";
 import Timer from "./Timer";
 
 function App() {
-  const [timerMins, setTimerMins] = useState(20);
-  const [timerSecs, setTimerSecs] = useState("00");
+  const [timerMins, setTimerMins] = useState(0);
+  const [timerSecs, setTimerSecs] = useState(5);
   const [isRunning, setIsRunning] = useState(false);
+
+  useEffect(() => {
+    if (timerSecs === 0 && timerMins === 0) return;
+    if (!isRunning) return; // if isRunning is false this will not run
+    const interval = setInterval(function () {
+      setTimerSecs((prevTimerSecs) => {
+        if (prevTimerSecs > 0) return prevTimerSecs - 1;
+        if (prevTimerSecs === 0 && timerMins > 0) return 59;
+        return 0;
+      });
+
+      setTimerMins((prevTimerMins) => {
+        if (timerSecs === 0) return prevTimerMins - 1;
+
+        return prevTimerMins;
+      });
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [isRunning, timerMins, timerSecs]);
 
   function handleStart() {
     setIsRunning(true);
-    // setTimerValue(timerValue - 1);
-    // look into using useEffect and setiNTERVAL to change the seconds every second and then the mins. Reference vieo https://www.youtube.com/watch?v=kqK3tD7XHxA
+    if (isRunning == true || (timerMins == 0 && timerSecs == 0)) return;
+    if (timerMins < 0 || timerSecs < 0) return;
+    // Reference video https://www.youtube.com/watch?v=kqK3tD7XHxA
   }
   function handlePause() {
     if (isRunning == false) return;
@@ -23,8 +44,6 @@ function App() {
     setTimerSecs("00");
     setIsRunning(false);
   }
-
-  console.log(isRunning);
 
   return (
     <>
