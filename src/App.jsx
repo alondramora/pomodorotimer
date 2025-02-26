@@ -10,13 +10,14 @@ function App() {
 
   function handleStart() {
     setIsRunning(true);
-    // setTimerValue(timerValue - 1);
   }
   function handlePause() {
     console.log("pause timer");
   }
   function handleReset() {
-    console.log("reset timer");
+    setTimerMins(20);
+    setTimerSecs("00");
+    setIsRunning(false);
   }
 
   return (
